@@ -55,7 +55,8 @@ export default function App() {
     if (!location) return;
     setInfo(null);
     const res = await coordinatesAPI.getCoordinatesByLocationName(location);
-    const coordinates = res.data.results[0].geometry;
+    let coordinates = null;
+    if (res.data.results.length) coordinates = res.data.results[0].geometry;
     if (coordinates) setCurrentLocation({ ...coordinates });
   };
 
