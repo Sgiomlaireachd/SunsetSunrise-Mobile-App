@@ -58,12 +58,13 @@ export default function App() {
     let coordinates = null;
     if (res.data.results.length) coordinates = res.data.results[0].geometry;
     if (coordinates) setCurrentLocation({ ...coordinates });
+    else setCurrentLocation(null);
   };
 
   return (
     <SafeAreaView>
       <HeaderText>Get information about Sunrise/Sunset!</HeaderText>
-      <SunriseSunsetInfo info={info} />
+      <SunriseSunsetInfo info={info} currentLocation={currentLocation} />
       <CityInput setNewLocation={setNewLocation} />
       <MyLocationButton onPress={setCurrentLocationCoordinates}>
         <MyLocationText>Use My Location Instead</MyLocationText>

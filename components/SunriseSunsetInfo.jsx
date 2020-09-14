@@ -3,8 +3,13 @@ import { Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import styled from "styled-components/native";
 
-const SunriseSunsetInfo = ({ info }) => {
-  if (!info) return <WaitingText>Loading...</WaitingText>;
+const SunriseSunsetInfo = ({ info, currentLocation }) => {
+  if (!info)
+    return (
+      <WaitingText>
+        {currentLocation ? "Loading..." : "Could't find the city :("}
+      </WaitingText>
+    );
   return (
     <APIInfo>
       <InfoBlock>
